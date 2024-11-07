@@ -1,0 +1,21 @@
+<mat-toolbar class="w-100">
+  <button mat-icon-button (click)="toggleMenu.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <img [src]="logoBlackSrc" alt="Logo" class="ms-4 logo" />
+
+  <span class="flex-shrink-1 flex-grow-1"></span>
+
+  <div class="buttons">
+    <button mat-button>Clientes</button>
+    <button mat-button>Clientes Selecionados</button>
+    <button mat-button (click)="logout()">Sair</button>
+  </div>
+
+  <span class="flex-shrink-1 flex-grow-1"></span>
+
+  <button mat-button>
+    Olá, <span class="fw-bold">{{ (session$ | async)?.nome }}!</span>
+  </button>
+</mat-toolbar>

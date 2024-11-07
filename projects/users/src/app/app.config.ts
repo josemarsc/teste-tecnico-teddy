@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, DEFAULT_CURRENCY_CODE, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, RouterModule } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -9,6 +9,9 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(),
-    importProvidersFrom(RouterModule.forRoot(routes))
+    importProvidersFrom(
+      RouterModule.forRoot(routes),
+    ),
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }
   ]
 };

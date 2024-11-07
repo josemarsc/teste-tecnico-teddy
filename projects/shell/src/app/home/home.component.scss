@@ -1,0 +1,20 @@
+toolbar {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+mat-drawer {
+  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+#app-page {
+  background: #F5F5F5;
+  height: calc(100% - var(--toolbar-height));
+  overflow: auto;
+  z-index: 99;
+
+  >* {
+    display: block;
+  }
+}

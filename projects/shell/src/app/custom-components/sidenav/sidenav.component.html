@@ -1,0 +1,14 @@
+<div id="container" class="d-flex flex-column h-100">
+  <div id="banner" class="d-flex align-items-center justify-content-center py-2">
+    <img [src]="logoWhiteSrc" alt="Logo" class="logo" />
+  </div>
+
+  <div id="content" class="d-flex flex-column gap-1">
+    @for (page of pages; track $index) {
+      <button mat-button [routerLink]="page.path" routerLinkActive="active" class="d-flex gap-2 justify-content-start px-4">
+        <mat-icon>{{ page.icon }}</mat-icon>
+        <span>{{ page.label }}</span>
+      </button>
+    }
+  </div>
+</div>

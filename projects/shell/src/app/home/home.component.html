@@ -1,8 +1,15 @@
-<div>
-  <h1> SHELL </h1>
-  <button routerLink="users">Users</button>
-  <button routerLink="products">Prods</button>
-  <button routerLink="teste">teste</button>
+<div id="container" class="h-100 w-100 d-flex flex-column">
+  <mat-drawer-container autosize class="h-100">
+    <mat-drawer #drawer mode="side" class="rounded-0">
+      <sidenav />
+    </mat-drawer>
 
-  <router-outlet />
+    <div id="main" class="d-flex flex-column flex-grow-1 h-100">
+      <toolbar (toggleMenu)="drawer.toggle()" />
+
+      <div id="app-page">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-drawer-container>
 </div>
