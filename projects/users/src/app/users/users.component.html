@@ -1,0 +1,54 @@
+<div id="container" class="h-100">
+  <div id="content" class="h-100 px-5 py-4">
+    @if (users?.length > 0) {
+      <div id="grid-users" class="d-grid gap-3">
+        @for (user of users; track $index) {
+          <div class="card-user d-flex flex-column gap-2 align-items-center justify-content-center rounded-2 px-4 pt-4 pb-1" [class.selected]="idsSelectedUsers?.includes(user.id)">
+            <h6 class="fw-bold">{{ user.name }}</h6>
+            <p>Salário: {{ user.salary | currency }}</p>
+            <p>Empresa: {{ user.companyValuation | currency }}</p>
+
+            <div class="actions d-flex align-items-center justify-content-between w-100">
+              <button mat-icon-button (click)="selectUser(user)">
+                <mat-icon>add</mat-icon>
+              </button>
+
+              <button mat-icon-button (click)="addEditUser(user)">
+                <mat-icon>edit</mat-icon>
+              </button>
+
+              <button mat-icon-button (click)="deleteUser(user)" color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <mat-paginator
+        class="mx-auto mt-5"
+        (page)="handlePaginatorEvent($event)"
+        [hidePageSize]="true"
+        [length]="(paginatorConfig.totalPages || 1) * (paginatorConfig.limit || 1)"
+        [pageSize]="paginatorConfig.limit || defaultPaginatorSize"
+        [pageSizeOptions]="defaultPaginatorOptions"
+      />
+    } @else if (users?.length === 0) {
+      <div class="d-flex flex-column align-items-center justify-content-center h-100">
+        <h6 class="fw-bold">Nenhum cliente cadastrado</h6>
+        <p>Clique no botão de adicionar para cadastrar um novo cliente</p>
+      </div>
+    }
+
+    @if (!users || loading) {
+      <div class="loading d-flex flex-column gap-4 align-items-center justify-content-center w-100 h-100">
+        <mat-spinner [strokeWidth]="2" />
+        <h6 class="fw-normal">Carregando clientes...</h6>
+      </div>
+    }
+  </div>
+
+  <button id="add-button" mat-fab class="mat-fab-add" (click)="addEditUser()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

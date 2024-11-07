@@ -1,0 +1,28 @@
+<div id="container" class="h-100">
+  <div id="content" class="h-100 px-5 py-4">
+    @if ((selectedUsers | async)?.length > 0) {
+      <div id="grid-users" class="d-grid gap-3">
+        @for (user of selectedUsers | async; track $index) {
+          <div class="card-user d-flex flex-column gap-2 align-items-center justify-content-center rounded-2 px-4 pt-4 pb-1">
+            <h6 class="fw-bold">{{ user.name }}</h6>
+            <p>Salário: {{ user.salary | currency }}</p>
+            <p>Empresa: {{ user.companyValuation | currency }}</p>
+
+            <div class="actions d-flex align-items-center justify-content-between w-100">
+              <button mat-icon-button (click)="unselectUser(user)" color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <button mat-stroke-button class="rounded-2 w-100 mt-5" (click)="unselectAllUsers()">Limpar clientes selecionados</button>
+    } @else {
+      <div class="d-flex flex-column gap-4 align-items-center justify-content-center w-100 h-100">
+        <h6 class="fw-bold">Nenhum cliente selecionado</h6>
+        <p>Selecione um cliente para visualizar detalhes</p>
+      </div>
+    }
+  </div>
+</div>

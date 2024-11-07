@@ -1,0 +1,46 @@
+:root {
+  --color-primary: #eb662e;
+  --color-primary-contrast: #fff;
+  --color-secondary: #151515;
+  --color-secondary-contrast: #fff;
+
+  --toolbar-height: 70px;
+  --mat-sidenav-container-width: 250px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Montserrat", Sans-serif;
+}
+
+button {
+  &[mat-flat-button] {
+    --mdc-filled-button-container-color: var(--color-primary);
+    background: var(--color-primary);
+  }
+
+  &[mat-stroke-button] {
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: .4em .8em;
+  }
+}
+
+.mat-mdc-form-field-bottom-align {
+  display: none;
+}
+
+.logo {
+  max-width: 200px;
+  margin: auto;
+}
+
+p,
+h6 {
+  margin: 0;
+}

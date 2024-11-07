@@ -1,11 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component, HostListener } from '@angular/core';
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { SidenavComponent } from '../custom-components/sidenav/sidenav.component';
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
-import { BehaviorSubject } from 'rxjs';
 import { ToolbarComponent } from '../custom-components/toolbar/toolbar.component';
-
-export const mainSidenavEl: BehaviorSubject<MatDrawer> = new BehaviorSubject(null);
+import { ActiveRoute } from '../../../../shared/models/types';
 
 @Component({
   selector: 'app-home',
@@ -23,10 +21,23 @@ export const mainSidenavEl: BehaviorSubject<MatDrawer> = new BehaviorSubject(nul
 })
 export class HomeComponent {
 
-  @ViewChild(MatDrawer) drawer: MatDrawer;
+  activeRoute: ActiveRoute;
+  isWeb: boolean = window.innerWidth > 768;
 
-  ngAfterViewInit() {
-    if (this.drawer) mainSidenavEl.next(this.drawer);
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.isWeb = event.target?.['innerWidth'] > 768
+  }
+
+  constructor(private router: Router) {
+    this.router.events.subscribe({
+      next: (res) => {
+        if (res instanceof NavigationEnd) {
+          const split = res.url.split('/');
+          this.activeRoute = split[2] as ActiveRoute;
+        }
+      }
+    })
   }
 
 }

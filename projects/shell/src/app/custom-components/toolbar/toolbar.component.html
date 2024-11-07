@@ -8,8 +8,10 @@
   <span class="flex-shrink-1 flex-grow-1"></span>
 
   <div class="buttons">
-    <button mat-button>Clientes</button>
-    <button mat-button>Clientes Selecionados</button>
+    @if (activeRoute === "users") {
+      <button mat-button routerLink="users/list">Clientes</button>
+      <button mat-button routerLink="users/selected">Clientes Selecionados</button>
+    }
     <button mat-button (click)="logout()">Sair</button>
   </div>
 

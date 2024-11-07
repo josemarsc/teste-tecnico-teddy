@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { sessionGuard } from '../../../shared/guards/session.guard';
+import { UsersComponent } from './users/users.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', redirectTo: 'list', pathMatch: 'full' },
+  { path: 'list', loadComponent: () => import('./users/users.component').then(m => m.UsersComponent) },
+  { path: 'selected', loadComponent: () => import('./selected-users/selected-users.component').then(m => m.SelectedUsersComponent) },
 ];

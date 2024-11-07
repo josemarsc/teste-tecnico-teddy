@@ -3,28 +3,4 @@
 @import "~@angular/material/prebuilt-themes/azure-blue.css";
 @import "bootstrap/scss/bootstrap";
 
-@import "./custom-styles/variables.scss";
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  font-family: "Montserrat", Sans-serif;
-}
-
-button {
-  --mdc-filled-button-container-color: var(--color-primary);
-  background: var(--color-primary);
-}
-
-.mat-mdc-form-field-bottom-align {
-  display: none;
-}
-
-.logo {
-  max-width: 200px;
-  margin: auto;
-}
+@import "../../shared/styles/styles.scss";

@@ -1,14 +1,14 @@
 <div id="container" class="h-100 w-100 d-flex flex-column">
   <mat-drawer-container autosize class="h-100">
-    <mat-drawer #drawer mode="side" class="rounded-0">
+    <mat-drawer #drawer mode="side" class="rounded-0" [opened]="isWeb">
       <sidenav />
     </mat-drawer>
 
     <div id="main" class="d-flex flex-column flex-grow-1 h-100">
-      <toolbar (toggleMenu)="drawer.toggle()" />
+      <toolbar (toggleMenu)="drawer.toggle()" [activeRoute]="activeRoute" />
 
       <div id="app-page">
-        <router-outlet></router-outlet>
+        <router-outlet />
       </div>
     </div>
   </mat-drawer-container>

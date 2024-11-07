@@ -19,6 +19,8 @@ export type AppPage = {
   icon: string;
 }
 
+export type ActiveRoute = 'users' | 'products';
+
 export type Paginator = {
   currentPage?: number;
   totalPages?: number;

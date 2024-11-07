@@ -1,10 +1,12 @@
 toolbar {
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px 0 rgba(from var(--color-secondary) r g b / 0.1);
   z-index: 1000;
+  max-width: 100%;
+  overflow: auto hidden;
 }
 
 mat-drawer {
-  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 4px 0 rgba(from var(--color-secondary) r g b / 0.1);
   z-index: 1000;
 }
 
@@ -13,8 +15,9 @@ mat-drawer {
   height: calc(100% - var(--toolbar-height));
   overflow: auto;
   z-index: 99;
+}
 
-  >* {
-    display: block;
-  }
+::ng-deep #app-page > *:not(router-outlet) {
+  display: block !important;
+  height: 100%;
 }
