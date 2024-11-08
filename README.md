@@ -2,12 +2,17 @@
 
 <br /><br /><br />
 
-## Como executar a aplicação
+## Como executar a aplicação localmente
 
 Cada aplicação/microfrontend pode ser executada de forma independente, no entanto, para executar a aplicação shell é necessário que as aplicações users e products estejam rodando.
 
 ### Como executar as aplicações de forma independente
   
+```zsh
+# builda a lib requirida por todas as aplicações
+ng build common
+```
+
 ```zsh
 npm run serve:prods
 npm run serve:users
@@ -22,7 +27,48 @@ npm run serve:all
 
 <br /><br /><br />
 
-## Criação e configuração do projeto
+## Vercel
+
+### Foi feito o deploy das aplicações no Vercel. As aplicações podem ser acessadas nos links abaixo:
+
+```
+SHELL:    https://teste-tecnico-teddy-shell.vercel.app/
+CLIENTES: https://teste-tecnico-teddy-users.vercel.app/
+PRODUTOS: https://teste-tecnico-teddy-products.vercel.app/
+```
+
+> [!WARNING]  
+> Por padrão navegadores enviam uma requisição de `OPTIONS` (preflight) antes de cada requisição ser efetivamente enviada. Tais requisições devem ser tratadas pelo servidor.<br/>
+> Para contornar esse problema é necessário executar o navegador com a flag `--disable-web-security` ou configurar o servidor para aceitar requisições `OPTIONS`.<br/><br/>
+> No Linux:
+> ```google-chrome-stable --disable-web-security --user-data-dir="chrome-temp" "http://localhost:10090" &```<br/><br/>
+> No Windows:
+> ```"{path/to/chrome/executable}" --disable-web-security --user-data-dir="C:/chrome" "http://localhost:10090"```
+
+
+<br /><br /><br />
+
+## Docker
+
+### O projeto pode ser executado em um container docker. As configurações do docker estão no diretório `docker`:
+```
+docker
+├── docker-compose.yml
+├── users.Dockerfile
+├── products.Dockerfile
+└── shell.Dockerfile
+``` 
+
+Para executar o projeto em um container docker, basta executar o comando abaixo:
+
+```zsh
+cd docker
+docker-compose up
+```
+
+<br /><br /><br />
+
+## Criação e configuração do projeto utilizando microfrontends
 
 ### Cria um novo projeto Angular sem criar uma aplicação padrão (src/app)
 ```zsh
@@ -179,4 +225,14 @@ module.exports = withModuleFederationPlugin({
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: "auto" }),
   },
 });
+```
+
+## Design system
+
+### Lib `common`
+Para simular um design system foi criado uma lib chamada `common` que contém alguns components, models, os services e styles utilizados em todas as aplicações.
+Para buildar a lib `common` é necessário executar o comando abaixo
+
+```zsh
+ng build common
 ```

@@ -98,6 +98,7 @@ export class UsersComponent {
           this.usersService.deleteUser(user.id);
           this.snackbarService.open('Cliente excluído com sucesso');
           this.getUsers();
+          selectedUsers$.next(selectedUsers$.value.filter(x => x.id !== user.id));
         } catch (error) {
           console.error(error);
           this.snackbarService.open('Erro ao excluir cliente');
