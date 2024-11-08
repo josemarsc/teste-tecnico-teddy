@@ -41,3 +41,17 @@ mat-paginator {
   bottom: var(--offset);
   right: var(--offset);
 }
+
+::ng-deep {
+  .isWeb {
+    #content-users {
+      padding-inline: 2.5em;
+    }
+  }
+
+  .isMobile {
+    #content-users {
+      padding-inline: 1em;
+    }
+  }
+}

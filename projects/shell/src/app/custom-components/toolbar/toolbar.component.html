@@ -3,21 +3,25 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-  <img [src]="logoBlackSrc" alt="Logo" class="ms-4 logo" />
+  @if (isWeb) {
+    <img [src]="logoBlackSrc" alt="Logo" class="ms-4 logo" />
 
-  <span class="flex-shrink-1 flex-grow-1"></span>
+    <span class="flex-shrink-1 flex-grow-1"></span>
+  }
 
   <div class="buttons">
     @if (activeRoute === "users") {
-      <button mat-button routerLink="users/list">Clientes</button>
-      <button mat-button routerLink="users/selected">Clientes Selecionados</button>
+      <button mat-button routerLinkActive="active" routerLink="users/list">Clientes</button>
+      <button mat-button routerLinkActive="active" routerLink="users/selected">Clientes Selecionados</button>
     }
     <button mat-button (click)="logout()">Sair</button>
   </div>
 
-  <span class="flex-shrink-1 flex-grow-1"></span>
+  @if (isWeb) {
+    <span class="flex-shrink-1 flex-grow-1"></span>
 
-  <button mat-button>
-    Olá, <span class="fw-bold">{{ (session$ | async)?.nome }}!</span>
-  </button>
+    <button mat-button>
+      Olá, <span class="fw-bold">{{ (session$ | async)?.nome }}!</span>
+    </button>
+  }
 </mat-toolbar>

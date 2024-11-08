@@ -9,3 +9,4 @@ export const defaultPaginatorSize = 10;
 export const defaultPaginatorOptions = [5, 10, 25, 100];
 export const session$: BehaviorSubject<Session> = new BehaviorSubject<Session>(null);
 export const selectedUsers$: BehaviorSubject<Users> = new BehaviorSubject<Users>(null);
+export const mobileBreakpoint = 768;

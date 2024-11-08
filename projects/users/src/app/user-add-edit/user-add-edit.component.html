@@ -1,5 +1,25 @@
-<div id="container">
-  == {{ user?.name }} ==
+<div id="container" class="p-3">
+  <div class="d-flex align-items-center justify-content-between">
+    <h6 class="fw-bold">{{ user ? "Criar" : "Editar" }} cliente</h6>
 
-  <button (click)="close()">close</button>
+    <button (click)="close()" class="btn d-flex align-items-center justify-content-center">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div id="form" [formGroup]="form" class="d-flex flex-column gap-3 my-3">
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Digite o nome" formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Digite o salário" formControlName="salary" mask="separator" thousandSeparator="." prefix="R$ " />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Digite o valor da empresa" formControlName="companyValuation" mask="separator" thousandSeparator="." prefix="R$ " />
+    </mat-form-field>
+  </div>
+
+  <button mat-flat-button class="rounded-1 w-100" (click)="save()">Salvar cliente</button>
 </div>

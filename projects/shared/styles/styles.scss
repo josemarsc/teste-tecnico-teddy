@@ -21,6 +21,7 @@ body {
 button {
   &[mat-flat-button] {
     --mdc-filled-button-container-color: var(--color-primary);
+    --mdc-filled-button-label-text-color: var(--color-primary-contrast);
     background: var(--color-primary);
   }
 
@@ -29,10 +30,23 @@ button {
     border: 2px solid var(--color-primary);
     padding: .4em .8em;
   }
+
+  &[routerLinkActive] {
+    color: #000 !important;
+
+    &.active {
+      color: var(--color-primary) !important;
+    }
+  }
+
 }
 
 .mat-mdc-form-field-bottom-align {
   display: none;
+}
+
+.mat-mdc-dialog-surface {
+  border-radius: 10px !important;
 }
 
 .logo {
@@ -43,4 +57,15 @@ button {
 p,
 h6 {
   margin: 0;
+}
+
+.cdk-global-overlay-wrapper {
+  --mat-dialog-container-min-width: min(400px, 80%);
+}
+
+.cdk-overlay-backdrop {
+  &.blur {
+    backdrop-filter: blur(5px);
+    background: rgba(from var(--color-secondary) r g b / 0.4);
+  }
 }

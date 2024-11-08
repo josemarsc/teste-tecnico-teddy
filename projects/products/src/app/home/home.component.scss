@@ -1,0 +1,19 @@
+img {
+  max-width: 50%;
+}
+
+::ng-deep .isMobile #content-products {
+  flex-direction: column;
+
+  img {
+    max-height: 300px;
+  }
+}
+
+::ng-deep .isWeb #content-products {
+  height: 100%;
+
+  img {
+    max-height: 500px;
+  }
+}

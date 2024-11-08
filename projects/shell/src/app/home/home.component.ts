@@ -4,6 +4,7 @@ import { SidenavComponent } from '../custom-components/sidenav/sidenav.component
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
 import { ToolbarComponent } from '../custom-components/toolbar/toolbar.component';
 import { ActiveRoute } from '../../../../shared/models/types';
+import { mobileBreakpoint } from '../../../../shared/globals/globals';
 
 @Component({
   selector: 'app-home',
@@ -22,11 +23,11 @@ import { ActiveRoute } from '../../../../shared/models/types';
 export class HomeComponent {
 
   activeRoute: ActiveRoute;
-  isWeb: boolean = window.innerWidth > 768;
+  isWeb: boolean = window.innerWidth > mobileBreakpoint;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.isWeb = event.target?.['innerWidth'] > 768
+    this.isWeb = event.target?.['innerWidth'] > mobileBreakpoint
   }
 
   constructor(private router: Router) {

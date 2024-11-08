@@ -1,22 +1,23 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { StorageService } from '../../../../../shared/services/storage.service';
-import { logoBlackSrc, session$ } from '../../../../../shared/globals/globals';
+import { logoBlackSrc, mobileBreakpoint, session$ } from '../../../../../shared/globals/globals';
 import { ActiveRoute } from '../../../../../shared/models/types';
 
 @Component({
   selector: 'toolbar',
   standalone: true,
   imports: [
+    RouterLink,
+    RouterLinkActive,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     AsyncPipe,
-    RouterLink,
   ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
@@ -28,6 +29,13 @@ export class ToolbarComponent {
 
   logoBlackSrc = logoBlackSrc;
   session$ = session$;
+
+  isWeb: boolean = window.innerWidth > mobileBreakpoint;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.isWeb = event.target?.['innerWidth'] > mobileBreakpoint
+  }
 
   constructor(
     private storageService: StorageService,

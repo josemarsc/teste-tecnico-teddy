@@ -1,5 +1,5 @@
 <div id="container" class="h-100">
-  <div id="content" class="h-100 px-5 py-4">
+  <div id="content-users" class="h-100 py-4">
     @if ((selectedUsers | async)?.length > 0) {
       <div id="grid-users" class="d-grid gap-3">
         @for (user of selectedUsers | async; track $index) {
@@ -8,9 +8,9 @@
             <p>Salário: {{ user.salary | currency }}</p>
             <p>Empresa: {{ user.companyValuation | currency }}</p>
 
-            <div class="actions d-flex align-items-center justify-content-between w-100">
+            <div class="actions d-flex align-items-center justify-content-end w-100">
               <button mat-icon-button (click)="unselectUser(user)" color="warn">
-                <mat-icon>delete</mat-icon>
+                <mat-icon>remove</mat-icon>
               </button>
             </div>
           </div>

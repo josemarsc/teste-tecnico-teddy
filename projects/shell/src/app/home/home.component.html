@@ -1,4 +1,4 @@
-<div id="container" class="h-100 w-100 d-flex flex-column">
+<div id="container" class="h-100 w-100 d-flex flex-column" [class.isWeb]="isWeb" [class.isMobile]="!isWeb">
   <mat-drawer-container autosize class="h-100">
     <mat-drawer #drawer mode="side" class="rounded-0" [opened]="isWeb">
       <sidenav />

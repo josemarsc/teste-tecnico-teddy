@@ -9,8 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { SnackbarService } from '../../../../shared/services/snackbar.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatDialog } from '@angular/material/dialog';
 import { UserAddEditComponent } from '../user-add-edit/user-add-edit.component';
+import { ModalService } from '../../../../shared/services/modal.service';
 
 @Component({
   selector: 'app-home',
@@ -43,7 +43,7 @@ export class UsersComponent {
   constructor(
     private usersService: UsersService,
     private snackbarService: SnackbarService,
-    private matDialog: MatDialog,
+    private modalService: ModalService,
   ) {}
 
   ngOnInit() {
@@ -82,11 +82,33 @@ export class UsersComponent {
   }
 
   addEditUser(user: User = null) {
-    // this.matDialog.open(UserAddEditComponent, { data: { user } });
+    const modal = this.modalService.presentModal(UserAddEditComponent, { user });
+    modal.afterClosed().subscribe({
+      next: (result) => {
+        if (result) this.getUsers();
+      }
+    });
   }
 
-  deleteUser(user: User) {
+  async deleteUser(user: User) {
+    const confirm = this.modalService.presentConfirm("Excluir cliente", `Deseja excluir o cliente <span class="fw-bold">${user.name}</span>?`, { confirmText: 'Excluir' });
+    confirm.afterClosed().subscribe({
+      next: async (result) => {
+        if (!result) return;
 
+        const loading = this.modalService.presentLoading('Excluindo cliente...');
+        try {
+          this.usersService.deleteUser(user.id);
+          this.snackbarService.open('Cliente excluído com sucesso');
+          this.getUsers();
+        } catch (error) {
+          console.error(error);
+          this.snackbarService.open('Erro ao excluir cliente');
+        } finally {
+          loading.close();
+        }
+      }
+    });
   }
 
   handlePaginatorEvent(event: PageEvent) {
