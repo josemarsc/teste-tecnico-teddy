@@ -1,0 +1,26 @@
+@switch (type) {
+  @case ("icon-only") {
+    <button (click)="onClick()" class="btn d-flex align-items-center justify-content-center">
+      <mat-icon>{{ iconName }}</mat-icon>
+    </button>
+  }
+  @case ("flat") {
+    <button mat-flat-button class="rounded-1" (click)="onClick()" [ngClass]="{ 'w-100': expand }">
+      <ng-template [ngTemplateOutlet]="ngContent" />
+    </button>
+  }
+  @case ("clear") {
+    <button mat-button (click)="onClick()" [ngClass]="{ 'w-100': expand }">
+      <ng-template [ngTemplateOutlet]="ngContent" />
+    </button>
+  }
+  @case ("outline") {
+    <button mat-stroke-button class="rounded-2" (click)="onClick()" [classList]="class" [ngClass]="{ 'w-100': expand }">
+      <ng-template [ngTemplateOutlet]="ngContent" />
+    </button>
+  }
+}
+
+<ng-template #ngContent>
+  <ng-content />
+</ng-template>

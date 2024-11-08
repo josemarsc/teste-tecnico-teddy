@@ -2,15 +2,14 @@
   <div class="d-flex align-items-center justify-content-between">
     <h6 class="mx-3 fw-bolder" mat-dialog-title>{{ title }}</h6>
 
-    <button mat-icon-button class="mx-3" (click)="close()">
-      <mat-icon>close</mat-icon>
-    </button>
+    <lib-button type="icon-only" (clicked)="close()" iconName="close" />
   </div>
+
   <mat-dialog-content class="mx-3 p-0">
     <p [innerHTML]="message"></p>
   </mat-dialog-content>
 
   <mat-dialog-actions class="mx-3 px-0">
-    <button mat-flat-button class="rounded-1 w-100" (click)="close()"> Ok </button>
+    <lib-button (clicked)="confirm()"> {{ confirmText }} </lib-button>
   </mat-dialog-actions>
 </div>

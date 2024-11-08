@@ -1,16 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { User } from '../../model/user.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { GenericForm } from '../../../../shared/models/types';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { provideNgxMask } from 'ngx-mask';
 import { UsersService } from '../services/users.service';
-import { ModalService } from '../../../../shared/services/modal.service';
-import { SnackbarService } from '../../../../shared/services/snackbar.service';
+import { GenericForm, ModalService, SnackbarService } from '@lib/common';
+import { ButtonComponent } from "../../../../common/src/lib/components/button/button.component";
+import { InputComponent } from "../../../../common/src/lib/components/input/input.component";
 
 type TForm = GenericForm<Pick<User, 'name' | 'salary' | 'companyValuation'>>;
 
@@ -19,15 +15,12 @@ type TForm = GenericForm<Pick<User, 'name' | 'salary' | 'companyValuation'>>;
   standalone: true,
   providers: [provideNgxMask()],
   imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    NgxMaskDirective,
-  ],
+    ButtonComponent,
+    InputComponent
+],
   templateUrl: './user-add-edit.component.html',
-  styleUrl: './user-add-edit.component.scss'
+  styleUrl: './user-add-edit.component.scss',
+  schemas: [],
 })
 export class UserAddEditComponent {
 

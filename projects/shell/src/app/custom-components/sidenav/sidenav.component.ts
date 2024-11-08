@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { logoWhiteSrc } from '../../../../../shared/globals/globals';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { AppPage } from '../../../../../shared/models/types';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AppPage, logoWhiteSrc } from '@lib/common';
 
 @Component({
   selector: 'sidenav',

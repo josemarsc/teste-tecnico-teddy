@@ -17,7 +17,7 @@
         }
       </div>
 
-      <button mat-stroke-button class="rounded-2 w-100 mt-5" (click)="unselectAllUsers()">Limpar clientes selecionados</button>
+      <lib-button type="outline" (clicked)="unselectAllUsers()" class="mt-5"> Limpar clientes selecionados </lib-button>
     } @else {
       <div class="d-flex flex-column gap-4 align-items-center justify-content-center w-100 h-100">
         <h6 class="fw-bold">Nenhum cliente selecionado</h6>

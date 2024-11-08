@@ -1,17 +1,15 @@
 import { Component, HostListener } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { SidenavComponent } from '../custom-components/sidenav/sidenav.component';
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
 import { ToolbarComponent } from '../custom-components/toolbar/toolbar.component';
-import { ActiveRoute } from '../../../../shared/models/types';
-import { mobileBreakpoint } from '../../../../shared/globals/globals';
+import { ActiveRoute, mobileBreakpoint } from '@lib/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     RouterOutlet,
-    RouterLink,
     ToolbarComponent,
     SidenavComponent,
     MatDrawerContainer,
@@ -22,7 +20,7 @@ import { mobileBreakpoint } from '../../../../shared/globals/globals';
 })
 export class HomeComponent {
 
-  activeRoute: ActiveRoute;
+  activeRoute: ActiveRoute = 'users';
   isWeb: boolean = window.innerWidth > mobileBreakpoint;
 
   @HostListener('window:resize', ['$event'])

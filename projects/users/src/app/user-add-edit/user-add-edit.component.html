@@ -2,24 +2,16 @@
   <div class="d-flex align-items-center justify-content-between">
     <h6 class="fw-bold">{{ user ? "Criar" : "Editar" }} cliente</h6>
 
-    <button (click)="close()" class="btn d-flex align-items-center justify-content-center">
-      <mat-icon>close</mat-icon>
-    </button>
+    <lib-button (clicked)="close()" type="icon-only" iconName="close" />
   </div>
 
-  <div id="form" [formGroup]="form" class="d-flex flex-column gap-3 my-3">
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Digite o nome" formControlName="name" />
-    </mat-form-field>
+  <div id="form" class="d-flex flex-column gap-3 my-3">
+    <lib-input placeholder="Digite o nome" controlName="name" [formGroup]="form" type="text" />
 
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Digite o salário" formControlName="salary" mask="separator" thousandSeparator="." prefix="R$ " />
-    </mat-form-field>
+    <lib-input placeholder="Digite o salário" controlName="salary" [formGroup]="form" type="currency" />
 
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Digite o valor da empresa" formControlName="companyValuation" mask="separator" thousandSeparator="." prefix="R$ " />
-    </mat-form-field>
+    <lib-input placeholder="Digite o valor da empresa" controlName="companyValuation" [formGroup]="form" type="currency" />
   </div>
 
-  <button mat-flat-button class="rounded-1 w-100" (click)="save()">Salvar cliente</button>
+  <lib-button (clicked)="save()">Salvar cliente</lib-button>
 </div>

@@ -1,7 +1,5 @@
 <mat-toolbar class="w-100">
-  <button mat-icon-button (click)="toggleMenu.emit()">
-    <mat-icon>menu</mat-icon>
-  </button>
+  <lib-button type="icon-only" (clicked)="toggleMenu.emit()" iconName="menu" />
 
   @if (isWeb) {
     <img [src]="logoBlackSrc" alt="Logo" class="ms-4 logo" />

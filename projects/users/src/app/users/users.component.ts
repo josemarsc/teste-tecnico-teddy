@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { User, Users } from '../../model/user.model';
-import { defaultPaginatorOptions, defaultPaginatorSize, selectedUsers$, session$ } from '../../../../shared/globals/globals';
-import { Paginator } from '../../../../shared/models/types';
 import { CurrencyPipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { SnackbarService } from '../../../../shared/services/snackbar.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserAddEditComponent } from '../user-add-edit/user-add-edit.component';
-import { ModalService } from '../../../../shared/services/modal.service';
+import { session$ } from '../../../../shell/src/app/model/variables';
+import { defaultPaginatorOptions, defaultPaginatorSize, ModalService, Paginator, SnackbarService } from '@lib/common';
+import { selectedUsers$ } from '../../model/variables';
 
 @Component({
   selector: 'app-home',

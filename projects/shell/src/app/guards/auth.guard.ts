@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { StorageService } from '../../../../shared/services/storage.service';
-import { session$, SESSION_TIMEOUT } from '../../../../shared/globals/globals';
+import { StorageService } from '@lib/common';
+import { session$, SESSION_TIMEOUT } from '../model/variables';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const storageService = inject(StorageService);

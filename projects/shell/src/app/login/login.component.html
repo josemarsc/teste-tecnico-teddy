@@ -4,12 +4,10 @@
 
     <h2 class="m-0 fw-light text-center mt-5">Olá, seja bem vindo!</h2>
 
-    <div id="form" [formGroup]="form" class="d-flex flex-column gap-3">
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Digite o seu nome" formControlName="nome"  />
-      </mat-form-field>
+    <div id="form" class="d-flex flex-column gap-3">
+      <lib-input placeholder="Digite o seu nome" controlName="nome" [formGroup]="form" type="text" />
 
-      <button mat-flat-button class="rounded-1" (click)="login()">Entrar</button>
+      <lib-button (clicked)="login()"> Entrar </lib-button>
     </div>
   </div>
 </div>

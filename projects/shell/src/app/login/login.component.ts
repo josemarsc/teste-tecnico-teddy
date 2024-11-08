@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { GenericForm, Login } from '../../../../shared/models/types';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { SnackbarService } from '../../../../shared/services/snackbar.service';
-import { Session } from '../../../../shared/models/session.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { StorageService } from '../../../../shared/services/storage.service';
-import { logoBlackSrc, session$ } from '../../../../shared/globals/globals';
+import { ButtonComponent, GenericForm, InputComponent, Login, logoBlackSrc, Session, SnackbarService, StorageService } from '@lib/common';
+import { session$ } from '../model/variables';
 
 type TForm = GenericForm<Login>;
 
@@ -16,10 +10,8 @@ type TForm = GenericForm<Login>;
   selector: 'app-login',
   standalone: true,
   imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
+    ButtonComponent,
+    InputComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'

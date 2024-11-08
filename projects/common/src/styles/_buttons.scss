@@ -1,0 +1,27 @@
+button {
+  &[mat-flat-button] {
+    --mdc-filled-button-container-color: var(--color-primary);
+    --mdc-filled-button-label-text-color: var(--color-primary-contrast);
+    background: var(--color-primary);
+  }
+
+  &[mat-stroke-button] {
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 0.4em 0.8em;
+  }
+
+  &[routerLinkActive] {
+    color: #000 !important;
+  }
+
+  &[routerLinkActive] {
+    &.active {
+      color: var(--color-primary) !important;
+    }
+  }
+}
+
+lib-button {
+  display: contents;
+}

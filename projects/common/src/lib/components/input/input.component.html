@@ -1,0 +1,10 @@
+<mat-form-field class="w-100" [appearance]="appearance" [formGroup]="formGroup">
+  @switch (type) {
+    @case ("text") {
+      <input matInput [placeholder]="placeholder" [formControlName]="controlName" />
+    }
+    @case ("currency") {
+      <input matInput [placeholder]="placeholder" [formControlName]="controlName" mask="separator" thousandSeparator="." prefix="R$ " />
+    }
+  }
+</mat-form-field>

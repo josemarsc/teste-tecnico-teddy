@@ -1,12 +1,10 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
-import { StorageService } from '../../../../../shared/services/storage.service';
-import { logoBlackSrc, mobileBreakpoint, session$ } from '../../../../../shared/globals/globals';
-import { ActiveRoute } from '../../../../../shared/models/types';
+import { session$ } from '../../model/variables';
+import { ActiveRoute, ButtonComponent, logoBlackSrc, mobileBreakpoint, StorageService } from '@lib/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'toolbar',
@@ -15,9 +13,9 @@ import { ActiveRoute } from '../../../../../shared/models/types';
     RouterLink,
     RouterLinkActive,
     MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
     AsyncPipe,
+    ButtonComponent,
+    MatButtonModule,
   ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'

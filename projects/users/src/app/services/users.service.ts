@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, Users } from '../../model/user.model';
 import { environment } from '../../environments/environment.development';
-import { Paginator } from '../../../../shared/models/types';
+import { Paginator } from '@lib/common';
 
 @Injectable({
   providedIn: 'root'
