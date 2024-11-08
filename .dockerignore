@@ -1,0 +1,4 @@
+.angular
+node_modules
+chrome_temp
+dist

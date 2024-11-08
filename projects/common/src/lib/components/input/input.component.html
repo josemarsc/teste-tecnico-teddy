@@ -1,10 +1,20 @@
-<mat-form-field class="w-100" [appearance]="appearance" [formGroup]="formGroup">
+<mat-form-field class="w-100" [appearance]="appearance">
   @switch (type) {
     @case ("text") {
-      <input matInput [placeholder]="placeholder" [formControlName]="controlName" />
+      <!-- <ng-container *ngTemplateOutlet="inputText" /> -->
+      <div class="d-contents" [formGroup]="formGroup">
+        <input matInput [placeholder]="placeholder" [formControlName]="controlName" />
+      </div>
     }
     @case ("currency") {
-      <input matInput [placeholder]="placeholder" [formControlName]="controlName" mask="separator" thousandSeparator="." prefix="R$ " />
+      <!-- <ng-container *ngTemplateOutlet="currencyText" /> -->
+      <div class="d-contents" [formGroup]="formGroup">
+        <input matInput [placeholder]="placeholder" [formControlName]="controlName" mask="separator" thousandSeparator="." prefix="R$ " />
+      </div>
     }
   }
 </mat-form-field>
+
+<ng-template #inputText> </ng-template>
+
+<ng-template #currencyText> </ng-template>

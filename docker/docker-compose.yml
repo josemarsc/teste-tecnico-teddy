@@ -1,0 +1,34 @@
+networks:
+  core:
+    external: true
+
+services:
+  teddy-docker:
+    build:
+      context: ../
+      dockerfile: docker/shell.Dockerfile
+    ports:
+      - "10090:10090"
+    networks:
+      - core
+    depends_on:
+      - users
+      - products
+
+  users:
+    build:
+      context: ../
+      dockerfile: docker/users.Dockerfile
+    ports:
+      - "10091:10091"
+    networks:
+      - core
+
+  products:
+    build:
+      context: ../
+      dockerfile: docker/products.Dockerfile
+    ports:
+      - "10092:10092"
+    networks:
+      - core

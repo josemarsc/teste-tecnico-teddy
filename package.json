@@ -8,9 +8,10 @@
     "serve:users": "ng serve --project users",
     "serve:shell": "ng serve --project shell -o",
     "build": "ng build",
+    "build:lib": "ng build common",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:all": "ng s --project users & ng s --project products & ng s --project shell",
+    "serve:all": "ng s --project users --host 0.0.0.0 & ng s --project products --host 0.0.0.0 & ng s --project shell --host 0.0.0.0",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,

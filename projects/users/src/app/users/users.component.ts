@@ -7,7 +7,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserAddEditComponent } from '../user-add-edit/user-add-edit.component';
-import { session$ } from '../../../../shell/src/app/model/variables';
 import { defaultPaginatorOptions, defaultPaginatorSize, ModalService, Paginator, SnackbarService } from '@lib/common';
 import { selectedUsers$ } from '../../model/variables';
 
@@ -28,7 +27,6 @@ export class UsersComponent {
 
   users: Users;
   loading: boolean = false;
-  session = session$;
 
   paginatorConfig: Paginator = {
     page: 1,
